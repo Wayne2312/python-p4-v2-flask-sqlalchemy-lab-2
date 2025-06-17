@@ -14,7 +14,7 @@ class Customer(db.Model, SerializerMixin):
     reviews = db.relationship('Review', back_populates='customer')
     
     # Association Proxy for items
-    items = association_proxy('reviews', 'item', creator=lambda item: Review(item=item))
+    items = association_proxy('reviews', 'item')
 
 class Item(db.Model, SerializerMixin):
     __tablename__ = 'items'

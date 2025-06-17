@@ -4,11 +4,12 @@ from app import app
 from models import db, Customer, Review, Item
 
 with app.app_context():
-    
+    # Clear existing data
     Customer.query.delete()
     Review.query.delete()
     Item.query.delete()
 
+    # Create Customers
     customer1 = Customer(name='Tal Yuri')
     customer2 = Customer(name='Raha Rosario')
     customer3 = Customer(name='Luca Mahan')
@@ -16,6 +17,7 @@ with app.app_context():
     db.session.add_all([customer1, customer2, customer3])
     db.session.commit()
 
+    # Create Items
     item1 = Item(name='Laptop Backpack', price=49.99)
     item2 = Item(name='Insulated Coffee Mug', price=9.99)
     item3 = Item(name='6 Foot HDMI Cable', price=12.99)
@@ -24,18 +26,16 @@ with app.app_context():
     db.session.commit()
 
     # Create Reviews
-    review1 = Review(comment="Great backpack!", customer=customer1, item=item1)
-    review2 = Review(comment="Keeps coffee hot!", customer=customer1, item=item2)
-    review3 = Review(comment="Not very spacious.", customer=customer2, item=item1)
-
-    db.session.add_all([
-        review1,
-        review2,
+    reviews = [
+        Review(comment="Great backpack!", customer=customer1, item=item1),
+        Review(comment="Keeps coffee hot!", customer=customer1, item=item2),
+        Review(comment="Not very spacious.", customer=customer2, item=item1),
         Review(comment="Zipper broke the first week", customer=customer1, item=item1),
         Review(comment="Love this backpack!", customer=customer2, item=item1),
         Review(comment="Coffee stays hot for hours!", customer=customer1, item=item2),
         Review(comment="Best coffee mug ever!", customer=customer3, item=item2),
         Review(comment="Cable too short", customer=customer3, item=item3)
-    ])
-    
+    ]
+
+    db.session.add_all(reviews)
     db.session.commit()
