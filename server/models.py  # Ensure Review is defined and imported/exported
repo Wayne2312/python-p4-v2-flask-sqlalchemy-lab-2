@@ -1,0 +1,17 @@
+class Review:
+    def __init__(self, id, content, customer_id, item_id):
+        self.id = id
+        self.content = content
+        self.customer_id = customer_id
+        self.item_id = item_id
+
+# Ensure to export the Review class
+__all__ = ['Customer', 'Item', 'Review']  # Assuming Customer and Item are also defined in this file
+
+def get_reviews():
+    # Placeholder for a function to get reviews
+    pass
+
+def add_review(review):
+    # Placeholder for a function to add a review
+    pass

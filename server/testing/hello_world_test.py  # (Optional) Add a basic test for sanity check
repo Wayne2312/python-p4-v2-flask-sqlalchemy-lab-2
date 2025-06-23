@@ -1,0 +1,17 @@
+class Review:
+    def __init__(self, id, content, rating):
+        self.id = id
+        self.content = content
+        self.rating = rating
+
+def get_review_by_id(review_id):
+    # This is a placeholder for actual database retrieval logic
+    return Review(review_id, "Sample review", 5)
+
+import pytest
+
+def test_hello_world():
+    response = get_review_by_id(1)
+    assert response.id == 1
+    assert response.content == "Sample review"
+    assert response.rating == 5
